@@ -4,7 +4,8 @@
   "info": {
     "singularName": "guitarra",
     "pluralName": "guitarras",
-    "displayName": "Guitarras"
+    "displayName": "Guitarras",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -21,17 +22,38 @@
       "type": "decimal"
     },
     "imagen": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
-    "url": {
-      "type": "uid"
+    "slug": {
+      "type": "uid",
+      "targetField": "nombre"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "default": true
+    },
+    "categoria": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::categoria.categoria"
+    },
+    "promo_guitars": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::promo-guitar.promo-guitar",
+      "mappedBy": "guitarras"
     }
   }
 }

@@ -1,61 +1,58 @@
-# 🚀 Getting started with Strapi
+# 👋 ¡Hola! Gracias por visitar el Backend de APP GUITARLA
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+## 🎸 APP GUITARLA - Backend de E-commerce de Guitarras
 
-### `develop`
+APP GUITARLA Backend es la API desarrollada con Strapi para gestionar todas las funcionalidades de la plataforma de ecommerce de guitarras. Esta API maneja la gestión de productos, categorías, blogs, promociones, órdenes y la integración con MercadoPago para procesar pagos de manera segura y eficiente.
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
+## 🛠️ Tecnologías Utilizadas
 
+- **Strapi**: Framework de CMS de código abierto basado en Node.js para construir APIs flexibles.
+- **Node.js**: Entorno de ejecución para JavaScript en el servidor.
+- **MercadoPago**: Plataforma de pagos para procesar transacciones de manera segura.
+- **PostgreSQL**: Base de datos relacional para almacenar datos de la aplicación.
+- **Git**: Control de versiones.
+- **GitHub**: Para la integración y despliegue continuo (CI/CD).
+
+## 🎥 Demostración
+
+Puedes ver una demostración en video de cómo funciona la aplicación en [este enlace de YouTube](https://www.youtube.com/watch?v=OPiSc6o85jY&t=11s).
+
+## 📂 Estructura del Proyecto
+
+```bash
+src/api
+├── blog/           # Controllers y routes que controlan el content type de blog
+├── catgoria/       # Controllers y routes que controlan el content type de categoria
+├── guitarra/       # Controllers y routes que controlan el content type de guitarra
+├── order/          # Controllers y routes que controlan el content type de order
+├── promo-guitar/   # Controllers y routes que controlan el content type de promo-guitar
+└── review/         # Controllers y routes que controlan el content type de review
 ```
+
+## 🚀 Cómo Empezar
+1. Clona el repositorio:
+
+```bash
+git clone https://github.com/RodrigoLoboDev/STRAPI_GUITARLA
+```
+2. Instala las dependencias:
+
+```bash
+npm install
+```
+
+3. Inicia el servidor de desarrollo:
+
+```bash
 npm run develop
-# or
-yarn develop
 ```
 
-### `start`
+## 🤝 Contribuciones
+Las contribuciones son bienvenidas. Si tienes ideas para mejorar el proyecto, no dudes en abrir un issue o hacer un pull request.
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
+## 📧 Contacto
+- Email: rolobo2812@gmail.com
+- LinkedIn: [Jesús Luis Rodrigo Lobo](https://www.linkedin.com/in/jes%C3%BAs-luis-rodrigo-lobo-6594a81b4/)
+- GitHub: [RodrigoLoboDev](https://github.com/RodrigoLoboDev)
 
-```
-npm run start
-# or
-yarn start
-```
-
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
-
-```
-npm run build
-# or
-yarn build
-```
-
-## ⚙️ Deployment
-
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
-
-```
-yarn strapi deploy
-```
-
-## 📚 Learn more
-
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
-
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
-
-## ✨ Community
-
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
-
----
-
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+#### ⭐️ Si te gusta lo que hago, no dudes en seguirme y contribuir a mis proyectos. ⭐️

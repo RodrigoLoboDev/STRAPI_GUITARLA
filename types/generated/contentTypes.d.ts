@@ -362,40 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiGuitarraGuitarra extends Schema.CollectionType {
-  collectionName: 'guitarras';
-  info: {
-    singularName: 'guitarra';
-    pluralName: 'guitarras';
-    displayName: 'Guitarras';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    nombre: Attribute.String;
-    descripcion: Attribute.RichText;
-    precio: Attribute.Decimal;
-    imagen: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
-    url: Attribute.UID;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::guitarra.guitarra',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::guitarra.guitarra',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -822,6 +788,253 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiBlogBlog extends Schema.CollectionType {
+  collectionName: 'blogs';
+  info: {
+    singularName: 'blog';
+    pluralName: 'blogs';
+    displayName: 'Blog';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titulo: Attribute.String;
+    slug: Attribute.UID<'api::blog.blog', 'titulo'>;
+    contenido: Attribute.Blocks;
+    resumen: Attribute.Text;
+    imagen: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    fecha: Attribute.Date;
+    estado: Attribute.Enumeration<['deaft', 'published']>;
+    reviews: Attribute.Relation<
+      'api::blog.blog',
+      'oneToMany',
+      'api::review.review'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCategoriaCategoria extends Schema.CollectionType {
+  collectionName: 'categorias';
+  info: {
+    singularName: 'categoria';
+    pluralName: 'categorias';
+    displayName: 'Categoria';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nombre: Attribute.String;
+    slug: Attribute.UID<'api::categoria.categoria', 'nombre'>;
+    imagen: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::categoria.categoria',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::categoria.categoria',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGuitarraGuitarra extends Schema.CollectionType {
+  collectionName: 'guitarras';
+  info: {
+    singularName: 'guitarra';
+    pluralName: 'guitarras';
+    displayName: 'Guitarras';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nombre: Attribute.String;
+    descripcion: Attribute.RichText;
+    precio: Attribute.Decimal;
+    imagen: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    slug: Attribute.UID<'api::guitarra.guitarra', 'nombre'>;
+    active: Attribute.Boolean & Attribute.DefaultTo<true>;
+    isFeatured: Attribute.Boolean & Attribute.DefaultTo<true>;
+    categoria: Attribute.Relation<
+      'api::guitarra.guitarra',
+      'oneToOne',
+      'api::categoria.categoria'
+    >;
+    promo_guitars: Attribute.Relation<
+      'api::guitarra.guitarra',
+      'manyToMany',
+      'api::promo-guitar.promo-guitar'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::guitarra.guitarra',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::guitarra.guitarra',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiOrderOrder extends Schema.CollectionType {
+  collectionName: 'orders';
+  info: {
+    singularName: 'order';
+    pluralName: 'orders';
+    displayName: 'Order';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    preferenceId: Attribute.String;
+    products: Attribute.JSON;
+    total: Attribute.Decimal;
+    paymentStatus: Attribute.Enumeration<
+      ['pending', 'approved', 'rejected', 'cancelled']
+    >;
+    send: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPromoGuitarPromoGuitar extends Schema.CollectionType {
+  collectionName: 'promo_guitars';
+  info: {
+    singularName: 'promo-guitar';
+    pluralName: 'promo-guitars';
+    displayName: 'PromoGuitar';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nombre: Attribute.String;
+    descripcion: Attribute.Text;
+    imagen: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    start_date: Attribute.Date;
+    end_date: Attribute.Date;
+    is_active: Attribute.Boolean;
+    external_link: Attribute.String;
+    priority: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 3;
+        },
+        number
+      >;
+    slug: Attribute.UID<'api::promo-guitar.promo-guitar', 'nombre'>;
+    guitarras: Attribute.Relation<
+      'api::promo-guitar.promo-guitar',
+      'manyToMany',
+      'api::guitarra.guitarra'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::promo-guitar.promo-guitar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::promo-guitar.promo-guitar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiReviewReview extends Schema.CollectionType {
+  collectionName: 'reviews';
+  info: {
+    singularName: 'review';
+    pluralName: 'reviews';
+    displayName: 'Review';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    content: Attribute.Text;
+    rating: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+          max: 5;
+        },
+        number
+      >;
+    blog: Attribute.Relation<
+      'api::review.review',
+      'manyToOne',
+      'api::blog.blog'
+    >;
+    status: Attribute.Boolean & Attribute.DefaultTo<false>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::review.review',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::review.review',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -832,7 +1045,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::guitarra.guitarra': ApiGuitarraGuitarra;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -841,6 +1053,12 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::blog.blog': ApiBlogBlog;
+      'api::categoria.categoria': ApiCategoriaCategoria;
+      'api::guitarra.guitarra': ApiGuitarraGuitarra;
+      'api::order.order': ApiOrderOrder;
+      'api::promo-guitar.promo-guitar': ApiPromoGuitarPromoGuitar;
+      'api::review.review': ApiReviewReview;
     }
   }
 }

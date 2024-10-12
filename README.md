@@ -15,7 +15,7 @@ APP GUITARLA Backend es la API desarrollada con Strapi para gestionar todas las 
 
 ## 🎥 Demostración
 
-Puedes ver una demostración en video de cómo funciona la aplicación en [este enlace de YouTube](https://www.youtube.com/watch?v=OPiSc6o85jY&t=11s).
+Puedes ver una demostración en video de cómo funciona la aplicación en [este enlace de YouTube](https://youtu.be/p_KtkqA98P8).
 
 ## 📂 Estructura del Proyecto
 
